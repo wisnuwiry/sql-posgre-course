@@ -110,6 +110,82 @@ SELECT name || ', ' || country AS location FROM cities;
 SELECT CONCAT(name, ', ', country) AS location FROM cities;
 ```
 
+## Query
+
+### Filter `Where`
+
+```sql
+SELECT select_list
+FROM table_name
+WHERE condition
+ORDER BY sort_expression
+```
+
+The `WHERE` clause appears right after the FROM clause of the `SELECT` statement.  The `WHERE` clause uses the `condition` to filter the rows returned from the `SELECT` clause.
+
+Example:
+
+```sql
+SELECT * FROM cities WHERE area > 8224;
+```
+
+Comparison Math Operator at `WHERE`
+
+| Code  |  Name |
+|---|---|
+| `=`  |  Are the values equals? |
+| `>`  |  Is the value on the left greater? |
+| `<`  |  Is the value on the left less? |
+| `>=`  |  Is the value on the left greater or equal to? |
+| `IN`  |  Is the value present in a list? |
+| `<=`  |  Is the value on the left lesser or equal to? |
+| `<>`  |  Are the values not equal? |
+| `!=`  |  Are the values not equal? |
+| `BETWEEN`  |  Is the value between two other values? |
+| `NOT IN`  |  Is the value not persent in a list? |
+
+```sql
+SELECT * FROM cities WHERE area BETWEEN 2000 AND 5000;
+SELECT * FROM cities WHERE name IN ('Delhi', 'Shanghai');
+SELECT * FROM cities WHERE name NOT IN ('Delhi', 'Shanghai');
+SELECT * FROM cities WHERE area IN (2000, 5000) 
+                                AND name = 'Delhi';
+```
+
+### Update
+
+```sql
+UPDATE table_name
+SET column1 = value1,
+    column2 = value2,
+    ...
+WHERE condition;
+```
+
+In this syntax:
+
+- First, specify the name of the table that you want to update data after the UPDATE keyword.
+- Second, specify columns and their new values after SET keyword. The columns that do not appear in the SET clause retain their original values.
+- Third, determine which rows to update in the condition of the WHERE clause.
+
+### Delete
+
+```sql
+DELETE FROM table_name
+WHERE condition;
+```
+In this syntax:
+
+- First, specify the name of the table from which you want to delete data after the DELETE FROM keywords.
+- Second, use a condition in the WHERE clause to specify which rows from the table to delete
+
+Example:
+
+```sql
+DELETE FROM cities
+WHERE name = 'Tokyo';
+```
+
 ## References
 
 - https://www.udemy.com/course/sql-and-postgresql
@@ -117,3 +193,4 @@ SELECT CONCAT(name, ', ', country) AS location FROM cities;
 - https://pg-sql.com/
 - https://www.postgresql.org/docs/current/ddl-generated-columns.html
 - https://www.postgresql.org/docs/9.1/functions-string.html
+- https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/
